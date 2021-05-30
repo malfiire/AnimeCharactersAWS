@@ -1,0 +1,91 @@
+﻿@model Personaje
+
+@{ 
+
+    string tipoFormulario = "";
+
+    if (!Model.Id.Equals(Guid.Empty))
+    {
+        //Estamos en edición
+        tipoFormulario = "Edit";
+    }
+    else
+    {
+        //estamos en creación
+        tipoFormulario = "Create";
+    }
+}
+
+
+<div class="formulario">
+
+    <form method="post" asp-controller="Personaje" asp-action="@tipoFormulario" enctype="multipart/form-data">
+
+        @{
+            if (tipoFormulario.Equals("Edit"))
+            {
+                //ya que solo lo necesito en el caso de editar
+                <input class="form-control" type="hidden" asp-for="Id" />
+                <input class="form-control" type="hidden" asp-for="RutaImagen" />
+
+            }
+        }
+
+        <div class="box-image">
+            <div class="box">
+                <img id="inputImg" src="@Model.RutaImagen"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="box-input">
+                <label>Nombre</label>
+                <input class="form-control" asp-for="Nombre" type="text" required />
+            </div>
+
+        </div>
+        
+        <div class="form-group">
+            <div class="box-input">
+                <label>Habilidad</label>
+                <input class="form-control" asp-for="Habilidad" type="text" required />
+            </div>
+
+        </div>
+        
+        <div class="form-group">
+            <div class="box-input">
+                <label>Anime</label>
+                <input class="form-control" asp-for="Anime" type="text" required />
+            </div>
+
+        </div>
+
+      <label>Imagen</label>
+      <input class="form-control" accept="image/*" name="file" onchange="loadImage(event)" type="file" value="deku.jpg" />
+            
+        
+        <div class="btn-submit">
+            <button class="btn-mine" type="submit">@tipoFormulario</button>
+        </div>
+
+
+    </form>
+</div>
+
+
+
+
+<script>
+
+    var loadImage = function (event) {
+        var objectImg = document.getElementById('inputImg');
+
+        objectImg.src = URL.createObjectURL(event.target.files[0]);
+
+        objectImg.onload = function () {
+            URL.revokeObjectURL(objectImg.src) 
+        }
+    };
+</script>
+

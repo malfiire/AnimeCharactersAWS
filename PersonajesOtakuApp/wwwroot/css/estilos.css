@@ -1,0 +1,244 @@
+﻿
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#no-data {
+    text-align: center;
+    font-weight: 200;
+    font-size: 20px;
+}
+
+#home {
+    margin-top: 50px;
+}
+#home h1 {
+    font-family: 'Alfa Slab One', cursive;
+}
+
+#home p{
+    font-weight:200;
+    font-size:20px;
+}
+
+#cabecera {
+    background-color: #343a40;
+}
+.nav-item a{
+    color:white;
+}
+
+.box-image {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.box {
+    width: 250px;
+    height: 250px;
+    background: #343a40;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+    .box img {
+        width: 100%;
+        height: auto;
+    }
+
+@supports(object-fit: cover) {
+    .box img {
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+    }
+}
+
+.box2 {
+    width: 250px;
+    height: 250px;
+    background: #343a40;
+    display: flex;
+    justify-content: center;
+}
+
+    .box2 img {
+        width: 100%;
+        height: auto;
+    }
+
+@supports(object-fit: cover) {
+    .box2 img {
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+    }
+}
+
+
+.box-image3 {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.box3 {
+    width: 80%;
+    height: auto;
+    background: #343a40;
+    border-radius: 30px;
+}
+
+    .box3 .programando {
+        width: 100%;
+        border-radius: 30px;
+        height: auto;
+    }
+
+
+
+
+
+
+.personajes {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: center;
+}
+
+
+.card {
+    width: 250px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    margin: 20px;
+    text-align: center;
+}
+
+    .card h3 {
+        padding-top: 10px;
+        margin:0px;
+        color: #131313;
+        font-family: 'Kumbh Sans', sans-serif;
+        font-size: 20px;
+        font-weight:200;
+    }
+
+    .card img {
+        width: 100%;
+        height: auto;
+    }
+
+    .card p {
+        text-align: center;
+        margin:2px;
+        padding: 0px;
+    }
+
+
+.botonera {
+    margin-top:5px;
+    margin-bottom: 10px
+}
+
+i {
+    color: #343a40;
+}
+.botonera a{
+    text-decoration:none;
+}
+
+
+    .barra {
+        width: 100%;
+        display: flex;
+    }
+.barra h4{
+    margin:0px;
+}
+.barra a{
+    margin-left: 10px;
+}
+
+
+
+img {
+    max-width: 100%;
+}
+
+h3 {
+    text-align: center;
+}
+
+.formulario {
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    margin: 10px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-size: cover;
+    border: 1px solid rgb(195, 195, 195);
+}
+
+    .formulario form {
+        width: 100%;
+    }
+
+    .formulario .box-input {
+        align-items: center;
+    }
+
+        .formulario .box-input input {
+            width: 100%;
+            outline: none;
+            font-size: 15px;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid #a2a2a2;
+        }
+
+    .formulario form .btn-submit .btn-mine {
+        font-size: 18px;
+        width: 100%;
+        background: #343a40;
+        padding: 8px;
+        border: 1px solid #cbc9c9;
+        border-radius: 10px;
+        color: white;
+        font-weight: 400;
+        margin-top: 15px;
+    }
+
+label {
+    color: #2d4146;
+    font-weight: bold;
+}
+
+h2 {
+    text-align: center;
+    padding: 10px;
+    color: #343a40;
+    font-family: 'Alfa Slab One', cursive;
+}
+.boton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom:15px;
+}
+
+    .boton a {
+        width: 100px;
+    }

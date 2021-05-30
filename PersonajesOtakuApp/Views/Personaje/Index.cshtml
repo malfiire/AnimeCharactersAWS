@@ -1,0 +1,60 @@
+﻿@model List<Personaje>
+
+
+
+
+<h2>Personajes</h2>
+@if (Model.Count < 1)
+{
+<p id="no-data">No hay personajes en la base de datos...</p>
+}
+<div class="boton">
+
+    <a asp-controller="Personaje" class="btn btn-dark" asp-action="Create">
+        Crear
+    </a>
+</div>
+
+@if (Model.Count > 0)
+{
+    //hay por lo menos un personaje
+    //pintamos aquí la lista de personajes
+
+    <div class="personajes">
+
+        @foreach (Personaje personaje in Model)
+        {
+            string ruta = personaje.RutaImagen;
+
+
+
+
+            <div class="card">
+
+
+                <div class="box2">
+                    <img src="@ruta" />
+                </div>
+
+
+                <h3>@personaje.Nombre</h3>
+                <p>@personaje.Habilidad</p>
+                <p>@personaje.Anime</p>
+
+                <div class="botonera">
+                    <a asp-controller="Personaje" asp-action="Edit" asp-route-id="@personaje.Id">
+                        <i class="fas fa-edit fa-lg" id="icon-edit"></i>
+                    </a>
+                    <a asp-controller="Personaje" asp-action="Delete" asp-route-id="@personaje.Id">
+                        <i class="far fa-trash-alt fa-lg text-danger" id="icon-delete"></i>
+                    </a>
+                </div>
+            </div>
+
+        }
+
+
+    </div>
+}
+
+
