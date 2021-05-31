@@ -16,6 +16,7 @@ _Tú primer proyecto con DynamoDb y S3!_
   <li>Clona el proyecto en local.</li>
   <li>Cambia el nombre del S3 y la región con los datos de tu bucket.
   La clase donde debes cambiarlo se llama "<strong>RepositoryS3</strong>".</li>
+  <li>En la clase <strong>Personaje</strong>, cambia el nombre de la tabla dynamodb por la tuya.</li>
   <li>Abre el CMD, pon el siguiente comando: "<strong>aws configure</strong>" y completa los datos con las credenciales de tu usuario.</li>
   <li>Dale play y disfruta!</li>
 </ol>
