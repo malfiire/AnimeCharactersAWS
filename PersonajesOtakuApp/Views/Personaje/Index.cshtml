@@ -27,8 +27,6 @@
             string ruta = personaje.RutaImagen;
 
 
-
-
             <div class="card">
 
 
@@ -42,12 +40,29 @@
                 <p>@personaje.Anime</p>
 
                 <div class="botonera">
-                    <a asp-controller="Personaje" asp-action="Edit" asp-route-id="@personaje.Id">
-                        <i class="fas fa-edit fa-lg" id="icon-edit"></i>
-                    </a>
-                    <a asp-controller="Personaje" asp-action="Delete" asp-route-id="@personaje.Id">
-                        <i class="far fa-trash-alt fa-lg text-danger" id="icon-delete"></i>
-                    </a>
+
+                    <div class="edit">
+                        <a asp-controller="Personaje" asp-action="Edit" asp-route-id="@personaje.Id">
+                            <i class="fas fa-edit fa-lg" id="icon-edit"></i>
+                        </a>
+                    </div>
+
+                    <div class="delete">
+
+                        <a asp-controller="Personaje" asp-action="Delete" asp-route-id="@personaje.Id">
+                            <i class="far fa-trash-alt fa-lg text-danger" id="icon-delete"></i>
+                        </a>
+
+                    </div>
+
+
+                    <div class="delete">
+                        <a onclick="deleteMessage(@personaje.Id)" data-id="@(personaje.Id)">
+                            <i class="far fa-trash-alt fa-lg text-danger" id="icon-delete"></i>
+                        </a>
+                    </div>
+
+
                 </div>
             </div>
 
@@ -57,4 +72,60 @@
     </div>
 }
 
+
+<script>
+
+    function deleteMessage(id) {
+
+        alert(id);
+
+        let idPersonaje;
+        $("a").click(function () {
+             idPersonaje = $(this).data("id");
+        });
+
+        $(document).ready(function () {
+
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("Borrar")",
+                data: {id: idPersonaje},
+                dataType: "text",
+                success: function (msg) {
+
+                    Swal.fire({
+
+                        title: 'Are you sure?',
+                        text: "You won't be able to revert this!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!'
+
+                    }).then((result) => {
+
+                        if (result.isConfirmed) {
+
+                            if (msg == "eliminado") {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Your file has been deleted.',
+                                    'success'
+                                )
+                            }
+                            
+                        }
+                    })
+
+                },
+                error: function (req, status, error) {
+                    console.log(msg);
+                }
+            });
+        });
+
+   }
+
+</script>
 

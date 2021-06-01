@@ -148,15 +148,24 @@
 
 
 .botonera {
-    margin-top:5px;
-    margin-bottom: 10px
+    margin-top: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
+    .botonera .delete {
+        cursor:pointer;
+        margin-left:5px;    
+    }
+    
 
 i {
     color: #343a40;
 }
 .botonera a{
     text-decoration:none;
+
 }
 
 

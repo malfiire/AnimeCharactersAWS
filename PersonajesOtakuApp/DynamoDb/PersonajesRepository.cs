@@ -49,6 +49,7 @@ namespace PersonajesOtakuApp.DynamoDb
         {
             await context.SaveAsync(personaje);
         }
+
         public async Task DeletePersonaje(Guid id)
         {
             await context.DeleteAsync<Personaje>(id);

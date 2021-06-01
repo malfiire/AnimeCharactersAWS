@@ -120,12 +120,33 @@ namespace PersonajesOtakuApp.Controllers
         }
 
 
+        [HttpPost]
+        public async Task<string> Borrar(Guid id)
+        {
+            const string eliminado = "Eliminado";
+            const string incorrecto= "Incorrecto";
+
+            var personaje = await repository.GetPersonaje(id);
+
+            //obtener el nombre de la foto
+            var nombreImagen = Path.GetFileName(personaje.RutaImagen);
+
+            //eliminar la foto del bucket
+            bucketS3.DeleteImageFromS3(nombreImagen);
+
+            //eliminar el objeto de dynamodb
+            var resultado = repository.DeletePersonaje(id).IsCompleted;
+
+            return resultado == true ? eliminado.ToLower() : incorrecto.ToLower();
+        }
+
+
 
         [HttpGet]
-        [Route("Delete")]
+        [Route("Delete/{id}")]
         public async Task<IActionResult>Delete(Guid id)
         {
-            //obtener el objeto con ese id
+            
             var personaje = await repository.GetPersonaje(id);
 
             //obtener el nombre de la foto
