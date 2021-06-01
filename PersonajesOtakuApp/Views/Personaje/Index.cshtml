@@ -48,21 +48,10 @@
                     </div>
 
                     <div class="delete">
-
-                        <a asp-controller="Personaje" asp-action="Delete" asp-route-id="@personaje.Id">
-                            <i class="far fa-trash-alt fa-lg text-danger" id="icon-delete"></i>
-                        </a>
-
+                            <a id="@personaje.Id" onclick="deleteMessage(this)">
+                                <i class="far fa-trash-alt fa-lg text-danger" id="icon-delete"></i>
+                            </a>
                     </div>
-
-
-                    <div class="delete">
-                        <a onclick="deleteMessage(@personaje.Id)" data-id="@(personaje.Id)">
-                            <i class="far fa-trash-alt fa-lg text-danger" id="icon-delete"></i>
-                        </a>
-                    </div>
-
-
                 </div>
             </div>
 
@@ -75,56 +64,30 @@
 
 <script>
 
-    function deleteMessage(id) {
+    function deleteMessage(elemento) {
 
-        alert(id);
+        let idPersonaje = elemento.id;
 
-        let idPersonaje;
-        $("a").click(function () {
-             idPersonaje = $(this).data("id");
-        });
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            showCancelButton: true,
+            confirmButtonColor: '#343a40',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
 
-        $(document).ready(function () {
+                window.location = 'Personaje/Delete/'+idPersonaje;
 
-            $.ajax({
-                type: "POST",
-                url: "@Url.Action("Borrar")",
-                data: {id: idPersonaje},
-                dataType: "text",
-                success: function (msg) {
-
-                    Swal.fire({
-
-                        title: 'Are you sure?',
-                        text: "You won't be able to revert this!",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Yes, delete it!'
-
-                    }).then((result) => {
-
-                        if (result.isConfirmed) {
-
-                            if (msg == "eliminado") {
-                                Swal.fire(
-                                    'Deleted!',
-                                    'Your file has been deleted.',
-                                    'success'
-                                )
-                            }
-                            
-                        }
-                    })
-
-                },
-                error: function (req, status, error) {
-                    console.log(msg);
-                }
-            });
-        });
-
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+                
+            }
+        })
    }
 
 </script>

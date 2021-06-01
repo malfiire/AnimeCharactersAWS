@@ -251,3 +251,17 @@ h2 {
     .boton a {
         width: 100px;
     }
+
+
+.swal2-title {
+    color: #343a40;
+}
+
+.swal2-styled.swal2-confirm {
+    border: 0;
+    border-radius: .25em;
+    background: initial;
+    background-color: #7367f0;
+    color: #fff;
+    font-size: 1em;
+}
